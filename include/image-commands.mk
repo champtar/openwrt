@@ -470,6 +470,11 @@ define Build/kernel-bin
 	cp $< $@
 endef
 
+define Build/kernel-pack-npk
+	PYTHONPATH="$(STAGING_DIR_HOST)/share/npkpy" python $(STAGING_DIR_HOST)/share/npkpy/pack_npk_kernel.py --kernel $@ --output $@.npk
+	mv $@.npk $@
+endef
+
 define Build/linksys-image
 	let \
 		size="$$(stat -c%s $@)" \
