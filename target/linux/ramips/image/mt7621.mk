@@ -1819,7 +1819,7 @@ define Device/MikroTik
   LOADER_TYPE := elf
   KERNEL_INITRAMFS_NAME := vmlinux-initramfs
   KERNEL_INITRAMFS := $(KERNEL_DTB) | loader-kernel
-  IMAGE/sysupgrade.bin := append-kernel | yaffs-filesystem -L | \
+  IMAGE/sysupgrade.bin := append-kernel | yaffs-filesystem kernel -L | \
 	pad-to $$$$(BLOCKSIZE) | append-rootfs | pad-rootfs | check-size | \
 	append-metadata
 endef
